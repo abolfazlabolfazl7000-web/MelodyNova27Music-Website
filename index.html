@@ -2,97 +2,365 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>MelodyNova27 Music</title>
 
 <style>
-*{box-sizing:border-box}
-body{
- margin:0;
- background:#09090d;
- color:#fff;
- font-family:Arial,sans-serif
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
-header{
- padding:35px 20px;
- text-align:center;
- background:linear-gradient(135deg,#21152d,#09090d)
-}
-header h1{font-size:32px;margin:0 0 10px}
-header p{color:#aaa}
 
-.container{
- max-width:1000px;
- margin:auto;
- padding:25px 15px 110px
+body{
+    font-family:Tahoma,Arial,sans-serif;
+    background:#09090d;
+    color:white;
+    padding-bottom:100px;
+}
+
+header{
+    background:linear-gradient(135deg,#15151f,#0b0b10);
+    padding:25px 7%;
+    border-bottom:1px solid #24242e;
+    position:sticky;
+    top:0;
+    z-index:50;
+}
+
+.header{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+.logo span{
+    color:#a855f7;
 }
 
 .search{
- width:100%;
- padding:16px;
- border-radius:14px;
- border:1px solid #292933;
- background:#15151b;
- color:white;
- font-size:16px;
- outline:none;
- margin-bottom:25px
+    width:100%;
+    max-width:450px;
+    background:#17171f;
+    border:1px solid #292936;
+    border-radius:30px;
+    padding:13px 20px;
+    color:white;
+    outline:none;
+    font-size:14px;
+}
+
+.search:focus{
+    border-color:#a855f7;
+}
+
+.hero{
+    max-width:1200px;
+    margin:45px auto;
+    padding:55px 35px;
+    border-radius:30px;
+    background:linear-gradient(135deg,#24133b,#11111a);
+    position:relative;
+    overflow:hidden;
+}
+
+.hero:after{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    background:#a855f7;
+    filter:blur(120px);
+    opacity:.25;
+    left:-80px;
+    top:-100px;
+}
+
+.hero h1{
+    font-size:42px;
+    margin-bottom:15px;
+    position:relative;
+    z-index:2;
+}
+
+.hero p{
+    color:#b9b9c5;
+    font-size:16px;
+    line-height:2;
+    position:relative;
+    z-index:2;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:0 20px;
+}
+
+.section{
+    margin:45px 0;
+}
+
+.section-title{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:22px;
+}
+
+.section-title h2{
+    font-size:24px;
+}
+
+.section-title span{
+    color:#9b9ba8;
+    font-size:13px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
 }
 
 .card{
- display:flex;
- align-items:center;
- gap:15px;
- background:#15151b;
- border:1px solid #292933;
- border-radius:18px;
- padding:14px;
- margin-bottom:15px
+    background:#121219;
+    border:1px solid #22222c;
+    border-radius:18px;
+    padding:12px;
+    transition:.25s;
+    cursor:pointer;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:#8b5cf6;
+    background:#171720;
 }
 
 .cover{
- width:80px;
- height:80px;
- border-radius:14px;
- object-fit:cover;
- background:#222
+    width:100%;
+    aspect-ratio:1/1;
+    border-radius:14px;
+    background:linear-gradient(135deg,#272733,#111117);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:55px;
+    margin-bottom:13px;
+    overflow:hidden;
 }
 
-.info{flex:1}
-.info h2{margin:0 0 7px;font-size:18px}
-.info p{margin:0;color:#999}
+.cover img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
 
-button{
- border:0;
- border-radius:12px;
- padding:12px 17px;
- cursor:pointer;
- font-weight:bold
+.song-info{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.song-name{
+    font-weight:bold;
+    font-size:15px;
+    margin-bottom:7px;
+}
+
+.artist{
+    color:#92929e;
+    font-size:12px;
+}
+
+.play{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    border:0;
+    background:#8b5cf6;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+    flex-shrink:0;
+}
+
+.play:hover{
+    background:#a855f7;
+}
+
+.categories{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    padding-bottom:5px;
+}
+
+.category{
+    border:1px solid #292934;
+    background:#14141b;
+    color:#ccc;
+    border-radius:25px;
+    padding:10px 20px;
+    cursor:pointer;
+    white-space:nowrap;
+}
+
+.category.active,
+.category:hover{
+    background:#8b5cf6;
+    color:white;
+    border-color:#8b5cf6;
+}
+
+.empty{
+    text-align:center;
+    color:#777;
+    padding:40px;
+    display:none;
 }
 
 footer{
- text-align:center;
- color:#666;
- padding:30px
+    text-align:center;
+    color:#666;
+    padding:40px 20px;
+    border-top:1px solid #20202a;
+    margin-top:50px;
 }
+
+/* PLAYER */
 
 .player{
- position:fixed;
- bottom:0;
- left:0;
- right:0;
- background:#111116;
- border-top:1px solid #292933;
- padding:12px;
- text-align:center
+    position:fixed;
+    bottom:0;
+    right:0;
+    left:0;
+    height:82px;
+    background:rgba(15,15,21,.97);
+    border-top:1px solid #292934;
+    backdrop-filter:blur(15px);
+    z-index:100;
+    display:flex;
+    align-items:center;
+    padding:10px 5%;
+    gap:15px;
 }
 
-audio{width:min(600px,100%)}
+.player-cover{
+    width:55px;
+    height:55px;
+    border-radius:10px;
+    background:#242430;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+    overflow:hidden;
+    flex-shrink:0;
+}
 
-@media(max-width:600px){
- .card{padding:10px}
- .cover{width:65px;height:65px}
- button{padding:10px}
+.player-cover img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.player-info{
+    width:180px;
+    min-width:100px;
+}
+
+.player-title{
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom:5px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.player-artist{
+    font-size:11px;
+    color:#888;
+}
+
+audio{
+    flex:1;
+    max-width:600px;
+}
+
+@media(max-width:900px){
+    .cards{
+        grid-template-columns:repeat(3,1fr);
+    }
+}
+
+@media(max-width:650px){
+    header{
+        padding:18px 15px;
+    }
+
+    .header{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .logo{
+        text-align:center;
+    }
+
+    .hero{
+        margin:25px 15px;
+        padding:40px 25px;
+    }
+
+    .hero h1{
+        font-size:30px;
+    }
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+    }
+
+    .container{
+        padding:0 15px;
+    }
+
+    .player{
+        height:75px;
+        padding:8px 12px;
+    }
+
+    .player-info{
+        width:110px;
+    }
+
+    audio{
+        width:100px;
+    }
+}
+
+@media(max-width:400px){
+    .cards{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .player-info{
+        width:80px;
+    }
 }
 </style>
 </head>
@@ -100,71 +368,372 @@ audio{width:min(600px,100%)}
 <body>
 
 <header>
-<h1>🎵 MelodyNova27 Music</h1>
-<p>دنیای موسیقی در یک جا</p>
+    <div class="header">
+        <div class="logo">🎵 Melody<span>Nova27</span></div>
+
+        <input
+            id="search"
+            class="search"
+            type="text"
+            placeholder="🔍 جستجوی آهنگ یا خواننده..."
+        >
+    </div>
 </header>
 
-<div class="container">
 
-<input
- id="search"
- class="search"
- placeholder="🔎 جستجوی آهنگ یا خواننده..."
->
+<section class="hero">
+    <h1>دنیای موسیقی توی یک جا 🎧</h1>
+    <p>
+        جدیدترین آهنگ‌ها، موزیک‌های محبوب و هنرمندان مورد علاقه‌ات
+        در MelodyNova27 Music
+    </p>
+</section>
 
-<div id="musicList">
 
-<div class="card" data-search="آهنگ نمونه خواننده نمونه">
+<main class="container">
 
-<img
- class="cover"
- src="https://via.placeholder.com/300"
->
+    <div class="categories">
+        <button class="category active" onclick="filterCategory('all',this)">
+            همه
+        </button>
 
-<div class="info">
-<h2>آهنگ نمونه</h2>
-<p>خواننده نمونه</p>
-</div>
+        <button class="category" onclick="filterCategory('pop',this)">
+            پاپ
+        </button>
 
-<button onclick="playSong('music/song.mp3')">
-▶ پخش
-</button>
+        <button class="category" onclick="filterCategory('rap',this)">
+            رپ
+        </button>
 
-</div>
+        <button class="category" onclick="filterCategory('new',this)">
+            جدید
+        </button>
+    </div>
 
-</div>
-</div>
+
+    <section class="section">
+
+        <div class="section-title">
+            <h2>🔥 آهنگ‌های جدید</h2>
+            <span>جدیدترین‌ها</span>
+        </div>
+
+        <div id="songs" class="cards"></div>
+
+        <div id="empty" class="empty">
+            آهنگی پیدا نشد 😕
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-title">
+            <h2>⭐ محبوب‌ترین‌ها</h2>
+            <span>منتخب MelodyNova27</span>
+        </div>
+
+        <div class="cards">
+
+            <div class="card" onclick="playSong(0)">
+                <div class="cover">🎵</div>
+
+                <div class="song-info">
+                    <div>
+                        <div class="song-name">نمونه آهنگ</div>
+                        <div class="artist">MelodyNova27</div>
+                    </div>
+
+                    <button class="play">▶</button>
+                </div>
+            </div>
+
+
+            <div class="card" onclick="playSong(1)">
+                <div class="cover">🎧</div>
+
+                <div class="song-info">
+                    <div>
+                        <div class="song-name">Night Music</div>
+                        <div class="artist">MelodyNova27</div>
+                    </div>
+
+                    <button class="play">▶</button>
+                </div>
+            </div>
+
+
+            <div class="card" onclick="playSong(2)">
+                <div class="cover">🔥</div>
+
+                <div class="song-info">
+                    <div>
+                        <div class="song-name">New Track</div>
+                        <div class="artist">MelodyNova27</div>
+                    </div>
+
+                    <button class="play">▶</button>
+                </div>
+            </div>
+
+
+            <div class="card" onclick="playSong(3)">
+                <div class="cover">💜</div>
+
+                <div class="song-info">
+                    <div>
+                        <div class="song-name">Love Song</div>
+                        <div class="artist">MelodyNova27</div>
+                    </div>
+
+                    <button class="play">▶</button>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
 
 <footer>
-© 2026 MelodyNova27 Music
+    © 2026 MelodyNova27 Music
+    <br>
+    ساخته شده برای عشق به موسیقی 🎶
 </footer>
 
+
+<!-- MUSIC PLAYER -->
+
 <div class="player">
-<audio id="player" controls></audio>
+
+    <div id="playerCover" class="player-cover">
+        🎵
+    </div>
+
+    <div class="player-info">
+
+        <div id="playerTitle" class="player-title">
+            آهنگی انتخاب نشده
+        </div>
+
+        <div id="playerArtist" class="player-artist">
+            MelodyNova27
+        </div>
+
+    </div>
+
+    <audio id="audio" controls></audio>
+
 </div>
+
 
 <script>
 
-const player=document.getElementById("player");
+const songs = [
 
-function playSong(song){
- player.src=song;
- player.play();
+    {
+        title:"نمونه آهنگ",
+        artist:"MelodyNova27",
+        category:"new",
+        file:"music/song.mp3",
+        cover:""
+    },
+
+    {
+        title:"Night Music",
+        artist:"MelodyNova27",
+        category:"pop",
+        file:"music/song2.mp3",
+        cover:""
+    },
+
+    {
+        title:"New Track",
+        artist:"MelodyNova27",
+        category:"rap",
+        file:"music/song3.mp3",
+        cover:""
+    },
+
+    {
+        title:"Love Song",
+        artist:"MelodyNova27",
+        category:"pop",
+        file:"music/song4.mp3",
+        cover:""
+    },
+
+    {
+        title:"Rap Night",
+        artist:"MelodyNova27",
+        category:"rap",
+        file:"music/song5.mp3",
+        cover:""
+    },
+
+    {
+        title:"New Melody",
+        artist:"MelodyNova27",
+        category:"new",
+        file:"music/song6.mp3",
+        cover:""
+    }
+
+];
+
+
+const songsContainer = document.getElementById("songs");
+const search = document.getElementById("search");
+const empty = document.getElementById("empty");
+
+const audio = document.getElementById("audio");
+const playerTitle = document.getElementById("playerTitle");
+const playerArtist = document.getElementById("playerArtist");
+const playerCover = document.getElementById("playerCover");
+
+
+function showSongs(list){
+
+    songsContainer.innerHTML = "";
+
+    if(list.length === 0){
+        empty.style.display = "block";
+        return;
+    }
+
+    empty.style.display = "none";
+
+    list.forEach((song,index)=>{
+
+        const originalIndex = songs.indexOf(song);
+
+        const card = document.createElement("div");
+
+        card.className = "card";
+
+        let cover = song.cover
+            ? `<img src="${song.cover}" alt="${song.title}">`
+            : "🎵";
+
+        card.innerHTML = `
+
+            <div class="cover">
+                ${cover}
+            </div>
+
+            <div class="song-info">
+
+                <div>
+                    <div class="song-name">
+                        ${song.title}
+                    </div>
+
+                    <div class="artist">
+                        ${song.artist}
+                    </div>
+                </div>
+
+                <button class="play">
+                    ▶
+                </button>
+
+            </div>
+        `;
+
+        card.querySelector(".play").onclick = function(e){
+
+            e.stopPropagation();
+
+            playSong(originalIndex);
+
+        };
+
+        card.onclick = function(){
+
+            playSong(originalIndex);
+
+        };
+
+        songsContainer.appendChild(card);
+
+    });
+
 }
 
-document.getElementById("search").addEventListener("input",function(){
 
- const value=this.value.toLowerCase();
+function playSong(index){
 
- document.querySelectorAll(".card").forEach(card=>{
+    const song = songs[index];
 
-  const text=card.dataset.search.toLowerCase();
+    if(!song) return;
 
-  card.style.display=text.includes(value)?"flex":"none";
+    audio.src = song.file;
 
- });
+    playerTitle.textContent = song.title;
+
+    playerArtist.textContent = song.artist;
+
+    if(song.cover){
+
+        playerCover.innerHTML =
+            `<img src="${song.cover}" alt="">`;
+
+    }else{
+
+        playerCover.innerHTML = "🎵";
+
+    }
+
+    audio.play().catch(()=>{});
+
+}
+
+
+function filterCategory(category,button){
+
+    document.querySelectorAll(".category")
+        .forEach(btn=>btn.classList.remove("active"));
+
+    button.classList.add("active");
+
+    if(category === "all"){
+
+        showSongs(songs);
+        return;
+
+    }
+
+    showSongs(
+        songs.filter(song =>
+            song.category === category
+        )
+    );
+
+}
+
+
+search.addEventListener("input",function(){
+
+    const value =
+        search.value.toLowerCase().trim();
+
+    const result =
+        songs.filter(song =>
+
+            song.title.toLowerCase().includes(value) ||
+            song.artist.toLowerCase().includes(value)
+
+        );
+
+    showSongs(result);
 
 });
+
+
+showSongs(songs);
 
 </script>
 
